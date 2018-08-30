@@ -49,7 +49,7 @@ push_changes() {
   # Push local changes to GitHub (auth via ENV variable)
   git remote add auth "https://${GH_TOKEN}@github.com/$REPO" >/dev/null 2>&1
   git status
-  git push --follow-tags --set-upstream auth master
+  git push --follow-tags --set-upstream auth HEAD:master
 }
 
 
