@@ -37,7 +37,7 @@ set_version() {
 commit_version() {
   # Commit new version in VERSION_FILE
   git add $VERSION_FILE >/dev/null 2>&1
-  git commit --message "Bumped version: $1" >/dev/null 2>&1
+  git commit --message "Bumped version: $1 -> $2" >/dev/null 2>&1
 }
 
 tag_version() {
@@ -78,7 +78,7 @@ else
 
   set_version "$VERSION"
 
-  commit_version "$VERSION"
+  commit_version "$OLD_VERSION" "$VERSION"
   git show HEAD
   echo "######################################################################"
 
