@@ -6,7 +6,7 @@ Template for automated Docker image builds using Travis
 
 Your repository should include the following files as a minimum to make it all
 work:
-```
+```shell
 .travis.yml
 Dockerfile
 release.sh
@@ -16,12 +16,12 @@ release.sh
 
 Copy the `release.sh` file into your repository, make sure it has the proper
 permissions so that Travis can execute it.
-```
+```shell
 chmod 775 release.sh
 ```
 
 Modify release.sh variables which are declared on top of the file:
-```
+```shell
 GH_USER='belsander'
 GH_REPO='docker-travis-release'
 VERSION_CMD="docker run -ti intelliops/travis-release:latest \
@@ -39,7 +39,7 @@ VERSION_FILE|The name of the file where the VERSION will be stored into, best le
 
 Copy the `.travis.yml` file into your repository and modify it to your needs.
 The most import part has to stay unchanged though:
-```
+```yaml
 after_success:
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./release.sh; fi
 ```
