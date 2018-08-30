@@ -48,8 +48,9 @@ tag_version() {
 push_changes() {
   # Push local changes to GitHub (auth via ENV variable)
   git remote add auth "https://${GH_TOKEN}@github.com/$REPO" >/dev/null 2>&1
-  git push --set-upstream auth HEAD:master
-  git push --follow-tags auth
+  git push --follow-tags --set-upstream auth HEAD:master
+  # The above does not push the tag sadly, so doing it with an extra command
+  git push auth "$1"
 }
 
 
@@ -84,6 +85,6 @@ else
   git tag -l
   echo "######################################################################"
 
-  push_changes
+  push_changes "$VERSION"
   echo "Released GitHub \"${REPO}\" with version: \"${VERSION}\""
 fi
