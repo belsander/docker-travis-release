@@ -6,7 +6,7 @@ GH_USER='belsander'
 GH_REPO='docker-travis-release'
 VERSION_FILE='VERSION'
 VERSION_CMD="docker run -ti intelliops/travis-release:latest \
-  /bin/bash -c 'echo 1.0.4'"
+  /bin/bash -c 'echo 1.0.5'"
 #####################################################################
 
 
