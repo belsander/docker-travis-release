@@ -48,7 +48,8 @@ tag_version() {
 
 push_changes() {
   # Push local changes to GitHub (auth via ENV variable)
-  git push --set-upstream origin master
+  git remote add auth "https://${GH_TOKEN}@github.com/$REPO" >/dev/null 2>&1
+  git push --set-upstream auth master
   git push --tags
 }
 
