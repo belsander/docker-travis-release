@@ -1,0 +1,18 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+install:
+  - docker build -t intelliops/travis-release:latest -f Dockerfile .
+  - docker run --name travis-release intelliops/travis-release:latest
+
+script:
+  - docker ps -a
+  - docker stop travis-release
+  - docker rm -f travis-release
+
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./release.sh; fi
