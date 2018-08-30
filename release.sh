@@ -9,9 +9,8 @@ VERSION_CMD="docker run -ti intelliops/travis-release:latest \
 
 setup_git() {
   # Configure git credentials for commit messages etc
-  export GIT_EMAIL='sander@intelliops.be'
-  export GIT_NAME='Sander Bel (Travis CI)'
-  export GIT_USERNAME='belsander'
+  git config --global user.email 'sander@intelliops.be'
+  git config --global user.name 'Sander Bel (Travis CI)'
 }
 
 get_current_version() {
