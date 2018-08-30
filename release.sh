@@ -1,10 +1,10 @@
 #!/bin/bash
-set -xe
+set -e
 
 REPO='belsander/docker-travis-release.git'
 VERSION_FILE='VERSION'
 VERSION_CMD="docker run -ti intelliops/travis-release:latest \
-  /bin/bash -c 'echo 1.0.3'"
+  /bin/bash -c 'echo 1.0.4'"
 
 
 setup_git() {
@@ -42,7 +42,9 @@ commit_version() {
 
 tag_version() {
   # Create tag at current commit
-  git tag "$1" >/dev/null 2>&1
+  TAG="$1"
+  git tag "$TAG" >/dev/null 2>&1
+  echo "$TAG"
 }
 
 push_changes() {
@@ -80,11 +82,11 @@ else
   git show HEAD
   echo "######################################################################"
 
-  tag_version "$VERSION"
+  TAG=$(tag_version "$VERSION")
   echo 'Listing all Git tags:'
   git tag -l
   echo "######################################################################"
 
-  push_changes "$VERSION"
+  push_changes "$TAG"
   echo "Released GitHub \"${REPO}\" with version: \"${VERSION}\""
 fi
