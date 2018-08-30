@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -xe
 
 REPO='belsander/docker-travis-release.git'
 VERSION_FILE='VERSION'
