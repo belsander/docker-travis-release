@@ -4,7 +4,7 @@ set -xe
 REPO='belsander/docker-travis-release.git'
 VERSION_FILE='VERSION'
 VERSION_CMD="docker run -ti intelliops/travis-release:latest \
-  /bin/bash -c 'echo 1.0.2'"
+  /bin/bash -c 'echo 1.0.3'"
 
 
 setup_git() {
