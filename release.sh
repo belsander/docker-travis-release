@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e
 
-REPO='belsander/docker-travis-release.git'
+############# CUSTOM VARIABLES, SET THESE TO YOUR NEEDS #############
+GH_USER='belsander'
+GH_REPO='docker-travis-release'
 VERSION_FILE='VERSION'
 VERSION_CMD="docker run -ti intelliops/travis-release:latest \
   /bin/bash -c 'echo 1.0.4'"
+#####################################################################
 
+
+############## DO NOT MODIFY ANYTHING BELOW THIS LINE  ##############
+REPO="$GH_USER/$GH_REPO.git"
 
 setup_git() {
   # Configure git credentials for commit messages etc
