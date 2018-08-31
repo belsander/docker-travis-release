@@ -9,10 +9,8 @@ before_install:
   - ./linting.sh
 
 install:
-  - docker build -t intelliops/travis-release:build -f Dockerfile .
-  - docker run --name travis-release intelliops/travis-release:build
+  - ./build.sh
 
 script:
-  - docker ps -a
-  - docker stop travis-release
-  - docker rm -f travis-release
+  - ./test.sh
+  - ./cleanup.sh

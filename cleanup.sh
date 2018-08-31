@@ -5,15 +5,17 @@ source ENV
 for DOCKERFILE in **/Dockerfile
 do
   echo "* $DOCKERFILE"
+  DOCKER_NAME=$(get_name "$DOCKERFILE")
 
-  docker run --rm -i hadolint/hadolint <"$DOCKERFILE"
+  docker stop "$DOCKER_NAME"
+  docker rm -f "$DOCKER_NAME"
   RESULT=$?
 
-  SET_EXIT_CODE $RESULT
+  set_exit_code $RESULT
 
   if [ "$RESULT" -eq 0 ]
   then
-    echo "PASSED!"
+    echo "STOPPED!"
   fi
 done
 

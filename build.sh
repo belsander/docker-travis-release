@@ -5,11 +5,12 @@ source ENV
 for DOCKERFILE in **/Dockerfile
 do
   echo "* $DOCKERFILE"
+  DOCKER_NAME=$(get_name "$DOCKERFILE")
 
-  docker run --rm -i hadolint/hadolint <"$DOCKERFILE"
+  docker build -f "$DOCKERFILE" --tag "$DOCKER_IMAGE:$DOCKER_NAME" .
   RESULT=$?
 
-  SET_EXIT_CODE $RESULT
+  set_exit_code $RESULT
 
   if [ "$RESULT" -eq 0 ]
   then

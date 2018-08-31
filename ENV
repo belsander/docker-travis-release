@@ -1,0 +1,16 @@
+DOCKER_IMAGE=travis-release
+EXIT_CODE=0
+
+set_exit_code() {
+  if [ "$1" -gt $EXIT_CODE ]
+  then
+    EXIT_CODE=$1
+  fi
+}
+
+get_name() {
+ echo "$(dirname "$1")"
+}
+
+# Set globstar to search all directories (also nested)
+shopt -s globstar
