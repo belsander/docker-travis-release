@@ -5,9 +5,12 @@ language: bash
 services:
   - docker
 
+before_install:
+  - docker run --rm -i hadolint/hadolint < Dockerfile
+
 install:
-  - docker build -t intelliops/travis-release:latest -f Dockerfile .
-  - docker run --name travis-release intelliops/travis-release:latest
+  - docker build -t intelliops/travis-release:build -f Dockerfile .
+  - docker run --name travis-release intelliops/travis-release:build
 
 script:
   - docker ps -a
