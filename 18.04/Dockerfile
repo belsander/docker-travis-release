@@ -1,8 +1,8 @@
 FROM  ubuntu:18.04
 
 ARG   UBUNTU_VERSION=18.04
-ARG   TRAVIS_RELEASE_VERSION=1.0.0
-ARG   RELEASE_DATE=2018-08-31
+ARG   TRAVIS_RELEASE_VERSION=latest
+ARG   RELEASE_DATE=automated-build-latest
 
 LABEL maintainer='Sander Bel <sander@intelliops.be>'
 LABEL ubuntu.version=$UBUNTU_VERSION

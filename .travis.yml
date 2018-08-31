@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker run --rm -i hadolint/hadolint < Dockerfile
+  - ./linting.sh
 
 install:
   - docker build -t intelliops/travis-release:build -f Dockerfile .
@@ -16,6 +16,3 @@ script:
   - docker ps -a
   - docker stop travis-release
   - docker rm -f travis-release
-
-after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then ./release.sh; fi
