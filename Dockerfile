@@ -11,7 +11,8 @@ LABEL release-date=$RELEASE_DATE
 
 RUN   echo 'This is template to release versioned Docker images by using Travis'
 
-RUN   echo "Build arguments: \n" \
-        " UBUNTU_VERSION: $UBUNTU_VERSION\n" \
-        " TRAVIS_RELEASE_VERSION: ${TRAVIS_RELEASE_VERSION}\n" \
-        " RELEASE_DATE: ${RELEASE_DATE}"
+RUN   printf """Build arguments:\\n\
+        UBUNTU_VERSION: %s\\n\
+        TRAVIS_RELEASE_VERSION: %s\\n\
+        RELEASE_DATE: %s\\n""" \
+        ${UBUNTU_VERSION} ${TRAVIS_RELEASE_VERSION} ${RELEASE_DATE}
